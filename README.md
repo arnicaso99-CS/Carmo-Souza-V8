@@ -4,17 +4,55 @@ Conversor minimo e independente para transformar exportacoes CSV/JSON do simulad
 
 A pagina Manus publica informa o modelo Carmo-Souza 1D e diz que o simulador exporta dados em CSV/PNG, mas o acesso ao simulador exige login. Por isso, esta alternativa evita depender do Manus: exporte ou cole os dados que voce tiver e rode localmente.
 
-## Caminho mais simples
+## Rodar localmente de graca
+
+Nao precisa pagar servidor, API, cloud ou banco de dados. O projeto usa apenas HTML/JavaScript no navegador e Python padrao.
+
+### Opcao 1 - navegador, sem instalar nada alem do download
+
+1. Baixe ou clone este repositorio.
+2. Abra `index.html` no navegador.
+3. Cole CSV ou JSON.
+4. Clique em `Converter`.
+5. Baixe `normalized.csv`, `metrics.json` e `report.md`.
+
+### Opcao 2 - servidor local Python
 
 ```bash
-python carmo_souza_converter.py entrada.csv -o saida
+python run_local.py
+```
+
+Depois abra:
+
+```text
+http://127.0.0.1:8000/index.html
+```
+
+### Opcao 3 - linha de comando
+
+```bash
+python carmo_souza_converter.py sample_data/example.csv -o saida
 ```
 
 A saida tera:
 
-- `normalized.csv` com colunas `time,x,s`
-- `metrics.json` com norma L2, energia funcional aproximada, minimo, maximo, media e variacao total
-- `report.md` com um resumo legivel
+- `saida/normalized.csv` com colunas `time,x,s`
+- `saida/metrics.json` com norma L2, energia funcional aproximada, minimo, maximo, media e variacao total
+- `saida/report.md` com um resumo legivel
+
+## Conectar pelo GitHub
+
+```bash
+git clone https://github.com/arnicaso99-CS/Carmo-Souza-V8.git
+cd Carmo-Souza-V8
+python run_local.py
+```
+
+Para atualizar depois:
+
+```bash
+git pull
+```
 
 ## Formatos aceitos
 
