@@ -1,22 +1,47 @@
-# Carmo-Souza V8 Data Converter
+# Carmo-Souza V8 Web Converter
 
-Conversor minimo e independente para transformar exportacoes CSV/JSON do simulador Carmo-Souza em um formato normalizado, auditavel e simples.
+Conversor web minimo e independente para transformar exportacoes CSV/JSON do simulador Carmo-Souza em um formato normalizado, auditavel e simples.
 
-A pagina Manus publica informa o modelo Carmo-Souza 1D e diz que o simulador exporta dados em CSV/PNG, mas o acesso ao simulador exige login. Por isso, esta alternativa evita depender do Manus: exporte ou cole os dados que voce tiver e rode localmente.
+## Rodar na web de graca
 
-## Rodar localmente de graca
+Este repositorio esta preparado para GitHub Pages via GitHub Actions.
+
+URL esperada depois do deploy:
+
+```text
+https://arnicaso99-cs.github.io/Carmo-Souza-V8/
+```
+
+Se a URL ainda nao abrir, ative uma vez no GitHub:
+
+1. Abra o repositorio `arnicaso99-CS/Carmo-Souza-V8`.
+2. Va em `Settings` > `Pages`.
+3. Em `Build and deployment`, selecione `Source: GitHub Actions`.
+4. Volte em `Actions` e rode `Deploy web app to GitHub Pages`, ou faca qualquer commit na branch `main`.
+
+Depois disso, o site fica online de graca e atualiza automaticamente a cada push na `main`.
+
+## Como usar no site
+
+1. Abra a URL do GitHub Pages.
+2. Cole CSV ou JSON no campo principal.
+3. Clique em `Converter`.
+4. Baixe `normalized.csv`, `metrics.json` e `report.md`.
+
+Tudo roda no navegador. Os dados nao precisam sair do computador do usuario.
+
+## Rodar localmente tambem
 
 Nao precisa pagar servidor, API, cloud ou banco de dados. O projeto usa apenas HTML/JavaScript no navegador e Python padrao.
 
-### Opcao 1 - navegador, sem instalar nada alem do download
+### Navegador local
 
 1. Baixe ou clone este repositorio.
 2. Abra `index.html` no navegador.
 3. Cole CSV ou JSON.
 4. Clique em `Converter`.
-5. Baixe `normalized.csv`, `metrics.json` e `report.md`.
 
-### Opcao 2 - servidor local Python
+### Servidor local Python
 
 ```bash
 python run_local.py
@@ -28,7 +53,7 @@ Depois abra:
 http://127.0.0.1:8000/index.html
 ```
 
-### Opcao 3 - linha de comando
+### Linha de comando
 
 ```bash
 python carmo_souza_converter.py sample_data/example.csv -o saida
@@ -90,7 +115,3 @@ Esses parametros entram apenas no calculo aproximado da energia funcional.
 ## Observacao epistemologica
 
 A saida e marcada como `E8 - Resultado computacional`. Isso significa que ela organiza e audita os dados, mas nao substitui validacao matematica, experimental ou revisao externa.
-
-## Uso pelo navegador
-
-Abra `index.html` localmente, cole um CSV/JSON e clique em converter. Nenhuma dependencia externa e necessaria.
